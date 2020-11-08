@@ -6,7 +6,7 @@ __author__ = "Franceco Mecatti"
 
 import logging
 import argparse
-from http.server import CGIHTTPRequestHandler, HTTPServer
+from http.server import CGIHTTPRequestHandler, ThreadingHTTPServer
 
 HOST, PORT = '', 9999  # Default values. Can be changed through command line arguments
 
@@ -14,7 +14,7 @@ class WSHandler(CGIHTTPRequestHandler):
     cgi_directories = ["/cgi"]
 
 def main(host, port):
-    httpd = HTTPServer((HOST, PORT), WSHandler)
+    httpd = ThreadingHTTPServer((HOST, PORT), WSHandler)  # Multiple clients handling
     httpd.serve_forever()
 
 
