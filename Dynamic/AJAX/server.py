@@ -12,7 +12,7 @@ HOST, PORT = '', 9999  # Default values. Can be changed through command line arg
 
 
 class Handler(CGIHTTPRequestHandler):
-    cgi_directories = ["./cgi-bin"]
+    cgi_directories = ["/cgi-bin"]
 
 
 def main(host, port):
