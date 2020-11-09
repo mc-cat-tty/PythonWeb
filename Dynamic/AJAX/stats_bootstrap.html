@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>AJAXStatsPage</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Footer-Clean.css">
+    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body onload="refreshStats()">
+    <div class="card tab-content">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs" id="tab-list" role="tablist">
+                <li class="nav-item"><a class="nav-link active" id="cpu-tab" role="tab" href="#cpu" aria-controls="cpu" aria-selected="true">CPU</a></li>
+                <li class="nav-item"><a class="nav-link" id="ram-tab" role="tab" href="#ram" aria-controls="ram" aria-selected="false">RAM</a></li>
+                <li class="nav-item"><a class="nav-link" id="disk-tab" role="tab" href="#disk" aria-controls="disk" aria-selected="false">Disk</a></li>
+                <li class="nav-item"><a class="nav-link" id="network-tab" role="tab" href="#network" aria-controls="network" aria-selected="false">Network</a></li>
+            </ul>
+        </div>
+        <div class="card-body tab-pane fade show active" id="cpu" role="tabpanel" aria-labelledby="cpu-tab">
+            <h4 class="card-title">Average load</h4>
+            <p class="card-text" id="average-load">&nbsp;</p>
+            <div class="progress" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">50%</div>
+            </div>
+        </div>
+        <div class="card-body tab-pane fade" id="ram" role="tabpanel" aria-labelledby="ram-tab">
+            <h4 class="card-title">Memory</h4>
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Total</h4>
+                        <p class="card-text" id="memory-total">&nbsp;</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Available</h4>
+                        <p class="card-text" id="memory-available">&nbsp;</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">In-use</h4>
+                        <p class="card-text" id="memory-in-use">&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body tab-pane fade" id="disk" role="tabpanel" aria-labelledby="disk-tab">
+            <h4 class="card-title">Disk</h4>
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Total</h4>
+                        <p class="card-text" id="disk-total">&nbsp;</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">In-use</h4>
+                        <p class="card-text" id="disk-in-use">&nbsp;</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Available</h4>
+                        <p class="card-text" id="disk-available">&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body tab-pane fade" id="network" role="tabpanel" aria-labelledby="network-tab">
+            <h4 class="card-title">Bytes</h4>
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Sent</h4>
+                        <p class="card-text" id="network-bytes-sent">&nbsp;</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Received</h4>
+                        <p class="card-text" id="network-bytes-received">&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+            <h4 class="card-title" style="margin-top: 37px;">Packets</h4>
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Sent</h4>
+                        <p class="card-text" id="network-packets-sent">&nbsp;</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Received</h4>
+                        <p class="card-text" id="network-packets-received">&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"><button class="btn btn-primary text-center border rounded" type="button" style="width: 100%;" onclick="refreshStats()">Button</button></div>
+            <div class="col"></div>
+        </div>
+    </div>
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col item social">
+                        <h3>Statistics visualizer</h3>
+                        <ul>
+                            <li>CPU</li>
+                            <li>RAM</li>
+                            <li>Disk</li>
+                            <li>Network</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="copyright">Francesco Mecatti <em>Copyleft 2020</em></p>
+            </div>
+        </footer>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/tabManager.js"></script>
+</body>
+<script src="stats.js"></script>
+</html>
