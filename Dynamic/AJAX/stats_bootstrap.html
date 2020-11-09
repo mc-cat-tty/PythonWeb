@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>AJAXStatsPage</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/Footer-Clean.css">
     <link rel="stylesheet" href="assets/css/Footer-Dark.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body onload="refreshStats()">
@@ -24,9 +22,11 @@
         <div class="card-body tab-pane fade show active" id="cpu" role="tabpanel" aria-labelledby="cpu-tab">
             <h4 class="card-title">Average load</h4>
             <p class="card-text" id="average-load">&nbsp;</p>
-            <div class="progress" aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-bar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">50%</div>
+            <!--  TODO: Future applications
+            <div class="progress">
+                <div class="progress-bar" id="average-load-progress-bar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">50%</div>
             </div>
+            -->
         </div>
         <div class="card-body tab-pane fade" id="ram" role="tabpanel" aria-labelledby="ram-tab">
             <h4 class="card-title">Memory</h4>
@@ -108,7 +108,7 @@
         </div>
         <div class="row">
             <div class="col"></div>
-            <div class="col"><button class="btn btn-primary text-center border rounded" type="button" style="width: 100%;" onclick="refreshStats()">Button</button></div>
+            <div class="col"><button class="btn btn-primary text-center border rounded" type="button" style="width: 100%;" onclick="refreshStats()">Refresh</button></div>
             <div class="col"></div>
         </div>
     </div>
