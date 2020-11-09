@@ -2,7 +2,7 @@
 CGI + AJAX for dynamic refresh
 """
 
-__author__ = "Franceco Mecatti"
+__author__ = "Francesco Mecatti"
 
 import logging
 import argparse
@@ -10,11 +10,13 @@ from http.server import CGIHTTPRequestHandler, ThreadingHTTPServer
 
 HOST, PORT = '', 9999  # Default values. Can be changed through command line arguments
 
-class WSHandler(CGIHTTPRequestHandler):
-    cgi_directories = ["/cgi"]
+
+class Handler(CGIHTTPRequestHandler):
+    cgi_directories = ["./cgi-bin"]
+
 
 def main(host, port):
-    httpd = ThreadingHTTPServer((HOST, PORT), WSHandler)  # Multiple clients handling
+    httpd = ThreadingHTTPServer((host, port), Handler)  # Multiple clients handling
     httpd.serve_forever()
 
 
