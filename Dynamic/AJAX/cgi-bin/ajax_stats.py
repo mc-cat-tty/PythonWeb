@@ -7,6 +7,8 @@ __author__ = "Francesco Mecatti"
 import psutil as ps
 import json
 
+# print(ps.cpu_percent(), file=sys.stderr)  # DEBUG: strange ps.cpu_percent() values are returned
+
 
 class Stats:
     def __init__(self):
@@ -62,5 +64,5 @@ class Stats:
 
 stats = Stats()
 
-print("Content-type: text/html\r\n")
+print("Content-type: application/json\r\n\r\n")
 print(stats.to_json())
