@@ -30,4 +30,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
     PORT = args.port
     HOST = args.address
+    logging.info(f"Starting server at {HOST}:{PORT}")
     main(HOST, PORT)

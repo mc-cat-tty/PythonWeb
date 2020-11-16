@@ -1,3 +1,6 @@
+let xhttp = new XMLHttpRequest();
+let timerID;
+
 function refreshStats() {
     function fillStats(stats) {
         document.getElementById("average-load").innerHTML = stats.average_load + "%";
@@ -14,9 +17,8 @@ function refreshStats() {
         document.getElementById("network-bytes-received").innerHTML = stats.network.bytes.received;
         document.getElementById("network-packets-sent").innerHTML = stats.network.packets.sent;
         document.getElementById("network-packets-received").innerHTML = stats.network.packets.received;
-        document.getElementById("boot-time").innerHTML = stats.boot_time + "seconds since the epoch";
+        document.getElementById("boot-time").innerHTML = stats.boot_time + " seconds since the epoch";
     }
-    let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
             const stats = JSON.parse(this.responseText);
@@ -25,4 +27,18 @@ function refreshStats() {
     };
     xhttp.open("GET", "/cgi-bin/ajax_stats.py", true);
     xhttp.send();
+}
+
+function autoRefresh() {  // AJAX + timer
+    if (document.getElementById("auto-refresh-checkbox").checked) {  // Enable auto refresh
+        timerID = setInterval(function() {
+            xhttp.open("GET", "/cgi-bin/ajax_stats.py", true);
+            xhttp.send()
+        }, 500);
+        document.getElementById("refresh-button").style.display = "none";
+    }
+    else {  // Disable auto refresh
+        clearInterval(timerID);
+        document.getElementById("refresh-button").style.display = "block";
+    }
 }

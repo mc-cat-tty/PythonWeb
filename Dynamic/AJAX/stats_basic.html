@@ -36,7 +36,9 @@
         <h2> Boot time: </h2>
             <div id="boot-time"></div>
     <br>
-    <button type="button" onclick="refreshStats()"> Refresh </button>
+    <button type="button" id="refresh-button" onclick="refreshStats()"> Refresh </button> <br>
+    <input type="checkbox" id="auto-refresh-checkbox" value="auto-refresh" onclick="autoRefresh()">
+      <label for="auto-refresh-checkbox"> Auto refresh </label> <br>
 </body>
 <script src="stats.js"> </script>
 <style>
